@@ -1,4 +1,5 @@
 // API URL - Change this to your Flask backend URL
+// For production, consider using environment-specific configuration
 const API_URL = 'http://localhost:5000/chat';
 
 // Get DOM elements

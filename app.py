@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import random
+import os
 
 app = Flask(__name__)
-CORS(app)
+# Configure CORS - in production, restrict to specific origins
+CORS(app, origins=os.getenv('CORS_ORIGINS', '*').split(','))
 
 # Simple chatbot responses
 responses = {
@@ -94,4 +96,6 @@ def chat():
         }), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    # Debug mode should be disabled in production
+    debug_mode = os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
+    app.run(debug=debug_mode, host='0.0.0.0', port=5000)

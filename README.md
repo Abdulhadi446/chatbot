@@ -51,6 +51,11 @@ python app.py
 
 The backend will start on `http://localhost:5000`
 
+**Note**: For production deployment:
+- Set `FLASK_DEBUG=false` environment variable
+- Configure `CORS_ORIGINS` to restrict allowed origins (e.g., `CORS_ORIGINS=http://yourdomain.com`)
+- Use a production WSGI server like Gunicorn instead of Flask's built-in server
+
 2. Open the frontend:
    - Simply open `index.html` in your web browser
    - Or use a local server:
